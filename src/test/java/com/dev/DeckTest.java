@@ -1,3 +1,5 @@
+package com.dev;
+
 import com.dev.domain.Card;
 import com.dev.domain.Deck;
 import com.dev.domain.Figure;
