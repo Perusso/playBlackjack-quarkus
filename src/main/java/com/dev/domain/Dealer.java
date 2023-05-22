@@ -1,9 +1,5 @@
 package com.dev.domain;
 
-public class Dealer implements Person {
+public class Dealer extends Person {
 
-    @Override
-    public String getHand() {
-        return null;
-    }
 }

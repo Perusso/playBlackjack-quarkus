@@ -1,6 +1,7 @@
 package com.dev.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,17 @@ public class Deck {
 
     public Deck(ArrayList<Card> deck) {
         this.deck = deck;
+    }
+
+    public Deck(boolean makeFullDeck) {
+        deck = makeFullDeck ? createFullDeck() : new ArrayList<>();
+    }
+
+    private ArrayList<Card> createFullDeck() {
+        return Arrays.stream(Suit.values())
+                .flatMap(suit -> Arrays.stream(Figure.values())
+                        .map(figure -> new Card(figure, suit)))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Card> getDeck() {

@@ -1,6 +1,14 @@
 package com.dev.domain;
 
-public interface Person {
+public abstract class Person {
 
-    String getHand();
+    private Hand hand;
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
+    }
 }

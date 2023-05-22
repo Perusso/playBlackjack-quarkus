@@ -13,9 +13,10 @@ public class Blackjack {
 
         Player player = new Player();
         Dealer dealer = new Dealer();
-        Deck deck = new Deck();
+        Deck deck = new Deck(true);
 
         System.out.println("Player's hand: " + player.getHand());
         System.out.println("Dealer's hand: " + dealer.getHand());
+        System.out.println("Cards in Deck: " + deck.getDeck().size());
     }
 }
