@@ -1,14 +1,16 @@
 package com.dev.domain;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+@ApplicationScoped
 public class Deck {
 
     private ArrayList<Card> deck;
-
 
     public Deck(){
         this.deck = new ArrayList<Card>();
@@ -27,6 +29,7 @@ public class Deck {
                 .flatMap(suit -> Arrays.stream(Figure.values())
                         .map(figure -> new Card(figure, suit)))
                 .collect(Collectors.toCollection(ArrayList::new));
+
     }
 
     public ArrayList<Card> getDeck() {

@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @QuarkusTest
 public class CardTest {
 
-
     @Test
     public void testGetFigureValue() {
         Card card = new Card(Figure.KING, Suit.DIAMOND);
