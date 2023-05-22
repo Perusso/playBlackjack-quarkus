@@ -10,6 +10,10 @@ public class Card {
         this.suit = suit;
     }
 
+    public Figure getFigure() {
+        return figure;
+    }
+
     public int getFigureValue() {
         return figure.getFigureValue();
     }
