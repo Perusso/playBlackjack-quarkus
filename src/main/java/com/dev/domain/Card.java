@@ -5,6 +5,7 @@ public class Card {
     private Figure figure;
 
     private Suit suit;
+
     public Card(Figure figure, Suit suit) {
         this.figure = figure;
         this.suit = suit;
@@ -24,7 +25,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
+        return "{" +
                 figure + " of " + suit +
                 '}';
     }

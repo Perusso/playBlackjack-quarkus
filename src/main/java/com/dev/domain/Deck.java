@@ -24,12 +24,11 @@ public class Deck {
         deck = makeFullDeck ? createFullDeck() : new ArrayList<>();
     }
 
-    private ArrayList<Card> createFullDeck() {
+    public ArrayList<Card> createFullDeck() {
         return Arrays.stream(Suit.values())
                 .flatMap(suit -> Arrays.stream(Figure.values())
                         .map(figure -> new Card(figure, suit)))
                 .collect(Collectors.toCollection(ArrayList::new));
-
     }
 
     public ArrayList<Card> getDeck() {

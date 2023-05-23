@@ -2,12 +2,11 @@ package com.dev.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Hand {
-    private final List<Card> cards;
+    private ArrayList<Card> cards;
 
     public Hand() {
-        this.cards = new ArrayList<>();
+        cards = new ArrayList<>();
     }
 
     public void addCard(Card card) {
