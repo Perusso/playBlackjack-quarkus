@@ -31,7 +31,7 @@ public class DeckTest {
 
     @Test
     public void testAddCard() {
-        Card card = new Card(Figure.ACE, Suit.SPADE);
+        Card card = new Card(Figure.ACE, Suit.SPADES);
         deck.addCard(card);
 
         Assertions.assertFalse(deck.isEmpty());
@@ -42,8 +42,8 @@ public class DeckTest {
     @Test
     public void testAddCards() {
         ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card(Figure.TWO, Suit.DIAMOND));
-        cards.add(new Card(Figure.KING, Suit.HEART));
+        cards.add(new Card(Figure.TWO, Suit.DIAMONDS));
+        cards.add(new Card(Figure.KING, Suit.HEARTS));
 
         deck.addCards(cards);
 
@@ -54,10 +54,10 @@ public class DeckTest {
 
     @Test
     public void testShuffleDeck() {
-        Card card1 = new Card(Figure.ACE, Suit.CLUB);
-        Card card2 = new Card(Figure.KING, Suit.SPADE);
-        Card card3 = new Card(Figure.QUEEN, Suit.HEART);
-        Card card4 = new Card(Figure.TEN, Suit.DIAMOND);
+        Card card1 = new Card(Figure.ACE, Suit.CLUBS);
+        Card card2 = new Card(Figure.KING, Suit.SPADES);
+        Card card3 = new Card(Figure.QUEEN, Suit.HEARTS);
+        Card card4 = new Card(Figure.TEN, Suit.DIAMONDS);
 
         deck.addCards(new ArrayList<>(Arrays.asList(card1, card2, card3, card4)));
 
@@ -71,9 +71,9 @@ public class DeckTest {
 
     @Test
     public void testDrawCard() {
-        Card card1 = new Card(Figure.TWO, Suit.SPADE);
-        Card card2 = new Card(Figure.FOUR, Suit.HEART);
-        Card card3 = new Card(Figure.SIX, Suit.DIAMOND);
+        Card card1 = new Card(Figure.TWO, Suit.SPADES);
+        Card card2 = new Card(Figure.FOUR, Suit.HEARTS);
+        Card card3 = new Card(Figure.SIX, Suit.DIAMONDS);
 
         deck.addCards(new ArrayList<>(Arrays.asList(card1, card2, card3)));
 
@@ -88,15 +88,15 @@ public class DeckTest {
     public void testIsEmpty() {
         Assertions.assertTrue(deck.isEmpty());
 
-        deck.addCard(new Card(Figure.JACK, Suit.CLUB));
+        deck.addCard(new Card(Figure.JACK, Suit.CLUBS));
 
         Assertions.assertFalse(deck.isEmpty());
     }
 
     @Test
     public void testReset() {
-        deck.addCard(new Card(Figure.ACE, Suit.DIAMOND));
-        deck.addCard(new Card(Figure.TEN, Suit.HEART));
+        deck.addCard(new Card(Figure.ACE, Suit.DIAMONDS));
+        deck.addCard(new Card(Figure.TEN, Suit.HEARTS));
 
         deck.reset();
 

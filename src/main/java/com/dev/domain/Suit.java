@@ -1,10 +1,10 @@
 package com.dev.domain;
 
 public enum Suit {
-    SPADE("Spades"),
-    CLUB("Clubs"),
-    DIAMOND("Diamonds"),
-    HEART("Hearts");
+    SPADES("Spades"),
+    CLUBS("Clubs"),
+    DIAMONDS("Diamonds"),
+    HEARTS("Hearts");
 
     private String suitName;
 

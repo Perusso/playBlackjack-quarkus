@@ -13,7 +13,7 @@ public class CardTest {
 
     @Test
     public void testGetFigureValue() {
-        Card card = new Card(Figure.KING, Suit.DIAMOND);
+        Card card = new Card(Figure.KING, Suit.DIAMONDS);
 
         int expectedValue = 10;
         int actualValue = card.getFigureValue();
@@ -23,7 +23,7 @@ public class CardTest {
 
     @Test
     public void testToString() {
-        Card card = new Card(Figure.KING, Suit.HEART);
+        Card card = new Card(Figure.KING, Suit.HEARTS);
 
         String expectedString = "Card{King of Hearts}";
         String actualString = card.toString();
