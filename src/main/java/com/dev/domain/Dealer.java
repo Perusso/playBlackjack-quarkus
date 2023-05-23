@@ -2,6 +2,8 @@ package com.dev.domain;
 
 public class Dealer extends Person {
 
+    private static final int DEALER_MIN_VALUE = 17;
+
     public Dealer() {
     }
 
@@ -10,7 +12,12 @@ public class Dealer extends Person {
     }
 
     @Override
-    public void playTurn() {
-
+    public void playTurn(Deck deck) {
+        while (getHand().getValue() < DEALER_MIN_VALUE) {
+            Card card = deck.drawCard();
+            getHand().addCard(card);
+            System.out.println("Dealer drew a card: " + card);
+        }
+        System.out.println("Dealer's final hand: " + getHand().getCards());
     }
 }
