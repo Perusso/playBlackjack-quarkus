@@ -26,5 +26,5 @@ public abstract class Person {
         return hand.getCards();
     }
 
-    public abstract void playTurn();
+    public abstract void playTurn(Deck deck);
 }
