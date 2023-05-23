@@ -1,80 +1,120 @@
 package com.dev.usecase;
 
+import com.dev.domain.Card;
 import com.dev.domain.Dealer;
 import com.dev.domain.Deck;
 import com.dev.domain.Player;
+import com.dev.userinterface.BlackjackArts;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import java.util.Scanner;
 
+@ApplicationScoped
 public class Blackjack {
 
-    private Player player;
-    private Dealer dealer;
-    private Deck deck;
+    private final Player player;
+    private final Dealer dealer;
+    private final Deck deck;
 
+    private String gameResult;
+
+    @Inject
     public Blackjack() {
-        player = new Player();
-        dealer = new Dealer();
-        deck = new Deck(true);
+        this.player = new Player();
+        this.dealer = new Dealer();
+        this.deck = new Deck(true);
         deck.shuffleDeck();
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Dealer getDealer() {
+        return dealer;
+    }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public String getGameResult() {
+        return gameResult;
+    }
+
     public void startGame() {
-        System.out.println("-----------------------------------");
-        System.out.println("Welcome to Blackjack!");
+        BlackjackArts.displayStartGameArt();
 
-        // Distribuir as cartas iniciais para o jogador e o dealer
-        player.getHand().addCard(deck.drawCard());
-        dealer.getHand().addCard(deck.drawCard());
-        player.getHand().addCard(deck.drawCard());
-        dealer.getHand().addCard(deck.drawCard());
+        this.distributeCards();
 
-        System.out.println("Player's hand: " + player.getHand().getCards());
-        System.out.println("Dealer's hand: " + dealer.getHand().getCards().get(0));
-        //System.out.println("Cards in Deck: " + deck.getDeck().size());
+        BlackjackArts.displayPersonHands(player, dealer);
 
-        // Verificar se algum dos participantes já possui um blackjack
+        checkIfPersonHasBlackjackOrContinueGame();
+    }
+
+    private void checkIfPersonHasBlackjackOrContinueGame() {
         if (player.getHand().hasBlackjack()) {
-            // O jogador tem um blackjack, realizar a lógica para esse caso
-            System.out.println("Player has a blackjack! Player wins!");
+            System.out.println("Player has a blackjack! Player wins!" + player.getHand().getCards().toString());
+            BlackjackArts.displayWinArt();
             playAgain();
         } else if (dealer.getHand().hasBlackjack()) {
-            // O dealer tem um blackjack, realizar a lógica para esse caso
-            System.out.println("Dealer has a blackjack! Dealer wins!");
+            System.out.println("Dealer has a blackjack! Dealer wins!" + dealer.getHand().getCards().toString());
+            BlackjackArts.displayLoseArt();
             playAgain();
         } else {
-            // Nenhum dos participantes tem um blackjack, continuar o jogo
-            player.playTurn(deck); // Jogador faz suas jogadas
-            // Verificar se o jogador já estourou (valor da mão maior que 21)
+            player.playTurn(deck);
+
             if (player.getHand().getValue() <= 21) {
-                dealer.playTurn(deck); // Dealer faz suas jogadas
+                dealer.playTurn(deck);
             }
 
-            // Realizar a lógica de comparação das mãos e determinar o vencedor
-            int playerHandValue = player.getHand().getValue();
-            int dealerHandValue = dealer.getHand().getValue();
-
-            System.out.println("Player's hand value: " + playerHandValue);
-            System.out.println("Dealer's hand value: " + dealerHandValue);
-
-            if (playerHandValue > 21) {
-                System.out.println("Player busted! Dealer wins!");
-            } else if (dealerHandValue > 21) {
-                System.out.println("Dealer busted! Player wins!");
-            } else if (playerHandValue == dealerHandValue) {
-                System.out.println("It's a tie!");
-            } else if (playerHandValue > dealerHandValue) {
-                System.out.println("Player wins!");
-            } else {
-                System.out.println("Dealer wins!");
-            }
+            compareHands();
 
             playAgain();
         }
     }
 
+    private void distributeCards() {
+        player.getHand().addCard(deck.drawCard());
+        dealer.getHand().addCard(deck.drawCard());
+        player.getHand().addCard(deck.drawCard());
+        dealer.getHand().addCard(deck.drawCard());
+    }
+
+    private void compareHands() {
+        int playerHandValue = player.getHand().getValue();
+        int dealerHandValue = dealer.getHand().getValue();
+
+        BlackjackArts.displayCompareHands(playerHandValue, dealerHandValue);
+
+        String gameWinner;
+        boolean isPlayerWinner = false;
+
+        if (playerHandValue > 21) {
+            gameWinner = "Player busted! Dealer wins!";
+        } else if (dealerHandValue > 21) {
+            gameWinner = "Dealer busted! Player wins!";
+            isPlayerWinner = true;
+        } else if (playerHandValue == dealerHandValue) {
+            gameWinner = "It's a tie!";
+        } else if (playerHandValue > dealerHandValue) {
+            gameWinner = "Player wins!";
+            isPlayerWinner = true;
+        } else {
+            gameWinner = "Dealer wins!";
+        }
+
+        System.out.println(gameWinner + "\n");
+        if (isPlayerWinner) {
+            BlackjackArts.displayWinArt();
+        } else {
+            BlackjackArts.displayLoseArt();
+        }
+    }
+
     private void playAgain() {
-        System.out.println("Do you want to play again? (Y/N)");
+        BlackjackArts.displayWannaPlayAgain();
 
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
@@ -82,12 +122,14 @@ public class Blackjack {
         if (choice.equalsIgnoreCase("Y")) {
             player.getHand().clear();
             dealer.getHand().clear();
+
             deck.reset();
             deck.shuffleDeck();
+
             Blackjack blackjack = new Blackjack();
             blackjack.startGame();
         } else {
-            System.out.println("Thank you for playing Blackjack! Goodbye!");
+            BlackjackArts.displayEndGameArt();
         }
     }
 }

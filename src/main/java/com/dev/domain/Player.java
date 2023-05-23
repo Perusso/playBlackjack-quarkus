@@ -1,9 +1,11 @@
 package com.dev.domain;
 
 
-import java.util.List;
+import com.dev.userinterface.BlackjackArts;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Scanner;
 
+@ApplicationScoped
 public class Player extends Person {
 
     Scanner scanner;
@@ -18,11 +20,7 @@ public class Player extends Person {
     }
 
     public int getChoice() {
-        System.out.println("It's your turn. Choose an action:");
-        System.out.println("1. Hit");
-        System.out.println("2. Stand");
-        System.out.println("Enter your choice: ");
-
+        BlackjackArts.displayPlayerChooseAction();
         return scanner.nextInt();
     }
 
@@ -37,19 +35,20 @@ public class Player extends Person {
                 Hand hand = getHand();
                 Card newCard = deck.drawCard();
                 hand.addCard(newCard);
-                System.out.println("Player drew a card: " + newCard);
-                System.out.println("Player's hand: " + hand.getCards());
+
+                BlackjackArts.displayPlayerHit(newCard, hand);
+
                 if (hand.getValue() <= 21) {
-                    playTurn(deck); // Chama o método novamente para permitir nova escolha
+                    playTurn(deck);
                 }
                 break;
             case 2:
                 // Player chooses to stand
-                System.out.println("Player stands.");
+                BlackjackArts.displayPlayerStand();
                 break;
             default:
                 System.out.println("Invalid choice. Please choose a valid option.");
-                playTurn(deck); // Chama o método novamente para permitir nova escolha
+                playTurn(deck);
                 break;
         }
     }

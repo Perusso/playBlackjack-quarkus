@@ -1,5 +1,8 @@
 package com.dev.domain;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class Dealer extends Person {
 
     private static final int DEALER_MIN_VALUE = 17;
