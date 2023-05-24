@@ -31,14 +31,14 @@ public class BlackjackArts {
     public static void displayNewGame() {
         System.out.println();
         System.out.println("-------------------------------------------------");
-        System.out.println("            Starting a new game...");
+        System.out.println("              Starting a new game...");
         System.out.println();
 
     }
     public static void displayPersonHands(Player player, Dealer dealer) {
         System.out.println("Player's hand: " + player.getHand().getCards() + " (" + player.getHand().getValue() + ")");
         System.out.println();
-        System.out.println("Dealer's hand: " + dealer.getHand().getCards().get(0) + ", {Hidden Card}");
+        System.out.println("Dealer's hand: " + dealer.getHand().getCards().get(0) + ", {Hidden Card}" + " (" + dealer.getHand().getCards().get(0).getFigureValue() + ")");
         System.out.println("-------------------------------------------------");
         System.out.println();
     }
