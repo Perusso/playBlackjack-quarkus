@@ -20,6 +20,15 @@ public class Player extends Person {
         super(hand);
     }
 
+    public Player(Hand hand, Scanner scanner) {
+        super(hand);
+        this.scanner = scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
     public int getChoice() {
         int choice;
         do {

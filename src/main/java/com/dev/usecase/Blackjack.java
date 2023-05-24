@@ -26,7 +26,7 @@ public class Blackjack {
         deck.shuffleDeck();
     }
 
-    //make a constructor for Blackjack thats do not create a full deck, for purpouse of using the same deck for multiple games
+    //Constructor for Blackjack that do not create a full deck, for purpose of using the same deck for multiple game rounds
     public Blackjack(Deck deck) {
         this.player = new Player();
         this.dealer = new Dealer();
@@ -69,7 +69,7 @@ public class Blackjack {
     private void checkDeckSize() {
         //check if the deck contains at least 4 cards to play a new game, otherwise, a new full deck is created
         if (deck.getDeck().size() < 4) {
-            deck.getDeck().clear();
+            deck.reset();
             deck.addCards(new Deck(true).getDeck());
             deck.shuffleDeck();
         }
