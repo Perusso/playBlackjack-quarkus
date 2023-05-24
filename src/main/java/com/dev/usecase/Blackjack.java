@@ -89,28 +89,24 @@ public class Blackjack {
         BlackjackArts.displayCompareHands(playerHandValue, dealerHandValue);
 
         String gameWinner;
-        boolean isPlayerWinner = false;
 
         if (playerHandValue > 21) {
             gameWinner = "Player busted! Dealer wins!";
+            BlackjackArts.displayLoseArt();
         } else if (dealerHandValue > 21) {
             gameWinner = "Dealer busted! Player wins!";
-            isPlayerWinner = true;
+            BlackjackArts.displayWinArt();
         } else if (playerHandValue == dealerHandValue) {
             gameWinner = "It's a tie!";
+            BlackjackArts.displayTieArt();
         } else if (playerHandValue > dealerHandValue) {
             gameWinner = "Player wins!";
-            isPlayerWinner = true;
-        } else {
-            gameWinner = "Dealer wins!";
-        }
-
-        System.out.println(gameWinner + "\n");
-        if (isPlayerWinner) {
             BlackjackArts.displayWinArt();
         } else {
+            gameWinner = "Dealer wins!";
             BlackjackArts.displayLoseArt();
         }
+        System.out.println(gameWinner + "\n");
     }
 
     private void playAgain() {

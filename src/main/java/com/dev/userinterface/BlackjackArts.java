@@ -10,6 +10,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class BlackjackArts {
 
     public static void displayStartGameArt(){
+        System.out.println("----------------------------------------------\n");
+        System.out.println();
+        System.out.println("----------------------------------------------\n");
         System.out.println( "\n" +
                 "  ____  _            _    _            _    \n" +
                 " |  _ \\| |          | |  (_)          | |   \n" +
@@ -71,7 +74,7 @@ public class BlackjackArts {
 
     public static void displayPlayerChooseAction() {
         System.out.println("-------------------------------------------------");
-        System.out.println("It's your turn. Choose an action:");
+        System.out.println("It's your turn. Choose an action (1/2):");
         System.out.println();
         System.out.println("1. Hit");
         System.out.println("2. Stand");
@@ -106,5 +109,17 @@ public class BlackjackArts {
                 " | |___| |__| |____) | |____|_|\n" +
                 " |______\\____/|_____/|______(_)\n" +
                 "                               \n");
+    }
+
+    public static void displayTieArt() {
+        System.out.println("\n" +
+                "  _______ _____ ______ _ \n" +
+                " |__   __|_   _|  ____| |\n" +
+                "    | |    | | | |__  | |\n" +
+                "    | |    | | |  __| | |\n" +
+                "    | |   _| |_| |____|_|\n" +
+                "    |_|  |_____|______(_)\n" +
+                "                         \n" +
+                "                         \n");
     }
 }
