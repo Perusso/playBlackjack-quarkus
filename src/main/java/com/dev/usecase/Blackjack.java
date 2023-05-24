@@ -1,6 +1,5 @@
 package com.dev.usecase;
 
-import com.dev.domain.Card;
 import com.dev.domain.Dealer;
 import com.dev.domain.Deck;
 import com.dev.domain.Player;
@@ -124,8 +123,11 @@ public class Blackjack {
 
             Blackjack blackjack = new Blackjack();
             blackjack.startGame();
-        } else {
+        } else if (choice.equalsIgnoreCase("N")) {
             BlackjackArts.displayEndGameArt();
+        } else {
+            System.out.println("Invalid choice. Please choose a valid option.");
+            playAgain();
         }
     }
 }
