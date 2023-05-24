@@ -10,7 +10,7 @@ public class BlackjackConsoleApplication implements QuarkusApplication {
     @Override
     public int run(String... args) {
         Blackjack blackjack = new Blackjack();
-        blackjack.startGame();
+        blackjack.startGame(true);
         return 0;
     }
 }

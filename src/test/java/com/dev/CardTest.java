@@ -25,7 +25,7 @@ public class CardTest {
     public void testToString() {
         Card card = new Card(Figure.KING, Suit.HEARTS);
 
-        String expectedString = "{King of Hearts}";
+        String expectedString = "King of Hearts";
         String actualString = card.toString();
 
         assertEquals(expectedString, actualString);

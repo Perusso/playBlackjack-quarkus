@@ -3,6 +3,8 @@ package com.dev.domain;
 
 import com.dev.userinterface.BlackjackArts;
 import jakarta.enterprise.context.ApplicationScoped;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @ApplicationScoped
@@ -16,12 +18,23 @@ public class Player extends Person {
 
     public Player(Hand hand) {
         super(hand);
-        scanner = new Scanner(System.in);
     }
 
     public int getChoice() {
-        BlackjackArts.displayPlayerChooseAction();
-        return scanner.nextInt();
+        int choice;
+        do {
+            BlackjackArts.displayPlayerChooseAction();
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1; // Valor inválido para indicar uma opção inválida
+                scanner.nextLine(); // Limpar o buffer do scanner
+            }
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please choose a valid option.");
+            }
+        } while (choice != 1 && choice != 2);
+        return choice;
     }
 
     @Override

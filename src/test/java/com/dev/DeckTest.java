@@ -54,12 +54,22 @@ public class DeckTest {
 
     @Test
     public void testShuffleDeck() {
+        deck.reset();
+
         Card card1 = new Card(Figure.ACE, Suit.CLUBS);
         Card card2 = new Card(Figure.KING, Suit.SPADES);
         Card card3 = new Card(Figure.QUEEN, Suit.HEARTS);
         Card card4 = new Card(Figure.TEN, Suit.DIAMONDS);
+        Card card5 = new Card(Figure.NINE, Suit.CLUBS);
+        Card card6 = new Card(Figure.EIGHT, Suit.SPADES);
+        Card card7 = new Card(Figure.SEVEN, Suit.HEARTS);
+        Card card8 = new Card(Figure.SIX, Suit.DIAMONDS);
+        Card card9 = new Card(Figure.FIVE, Suit.CLUBS);
+        Card card10 = new Card(Figure.FOUR, Suit.SPADES);
+        Card card11 = new Card(Figure.THREE, Suit.HEARTS);
+        Card card12 = new Card(Figure.TWO, Suit.DIAMONDS);
 
-        deck.addCards(new ArrayList<>(Arrays.asList(card1, card2, card3, card4)));
+        deck.addCards(new ArrayList<>(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12)));
 
         ArrayList<Card> originalDeck = new ArrayList<>(deck.getDeck());
 

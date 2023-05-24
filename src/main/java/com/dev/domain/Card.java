@@ -25,8 +25,9 @@ public class Card {
 
     @Override
     public String toString() {
-        return "{" +
+        return "" +
                 figure + " of " + suit +
-                '}';
+                //+ " (" + figure.getFigureValue() + ")" +
+                "";
     }
 }
