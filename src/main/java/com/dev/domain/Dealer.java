@@ -20,6 +20,7 @@ public class Dealer extends Person {
             Card card = deck.drawCard();
             getHand().addCard(card);
             System.out.println("Dealer drew a card: " + card);
+            System.out.println();
         }
         System.out.println("Dealer's final hand: " + getHand().getCards());
     }

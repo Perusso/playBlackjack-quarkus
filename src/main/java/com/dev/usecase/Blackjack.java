@@ -26,6 +26,13 @@ public class Blackjack {
         deck.shuffleDeck();
     }
 
+    //make a constructor for Blackjack thats do not create a full deck, for purpouse of using the same deck for multiple games
+    public Blackjack(Deck deck) {
+        this.player = new Player();
+        this.dealer = new Dealer();
+        this.deck = deck;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -42,8 +49,15 @@ public class Blackjack {
         return gameResult;
     }
 
-    public void startGame() {
-        BlackjackArts.displayStartGameArt();
+    public void startGame(boolean isFirstTime) {
+
+        if (isFirstTime) {
+            BlackjackArts.displayStartGameArt();
+        }
+
+        checkDeckSize();
+
+        BlackjackArts.displayNewGame();
 
         this.distributeCards();
 
@@ -52,13 +66,22 @@ public class Blackjack {
         checkIfPersonHasBlackjackOrContinueGame();
     }
 
+    private void checkDeckSize() {
+        //check if the deck contains at least 4 cards to play a new game, otherwise, a new full deck is created
+        if (deck.getDeck().size() < 4) {
+            deck.getDeck().clear();
+            deck.addCards(new Deck(true).getDeck());
+            deck.shuffleDeck();
+        }
+    }
+
     private void checkIfPersonHasBlackjackOrContinueGame() {
         if (player.getHand().hasBlackjack()) {
-            System.out.println("Player has a blackjack! Player wins!" + player.getHand().getCards().toString());
+            System.out.println("Player has a blackjack! Player wins! \n" + player.getHand().getCards().toString());
             BlackjackArts.displayWinArt();
             playAgain();
         } else if (dealer.getHand().hasBlackjack()) {
-            System.out.println("Dealer has a blackjack! Dealer wins!" + dealer.getHand().getCards().toString());
+            System.out.println("Dealer has a blackjack! Dealer wins! \n" + dealer.getHand().getCards().toString());
             BlackjackArts.displayLoseArt();
             playAgain();
         } else {
@@ -118,13 +141,12 @@ public class Blackjack {
             player.getHand().clear();
             dealer.getHand().clear();
 
-            deck.reset();
             deck.shuffleDeck();
 
-            Blackjack blackjack = new Blackjack();
-            blackjack.startGame();
+            Blackjack blackjack = new Blackjack(deck);
+            blackjack.startGame(false);
         } else if (choice.equalsIgnoreCase("N")) {
-            BlackjackArts.displayEndGameArt();
+            BlackjackArts.displayExitMessage();
         } else {
             System.out.println("Invalid choice. Please choose a valid option.");
             playAgain();
