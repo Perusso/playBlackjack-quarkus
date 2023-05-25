@@ -1,7 +1,7 @@
 package com.dev.domain;
 
 
-import com.dev.userinterface.BlackjackArts;
+import com.dev.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.InputMismatchException;
@@ -32,12 +32,12 @@ public class Player extends Person {
     public int getChoice() {
         int choice;
         do {
-            BlackjackArts.displayPlayerChooseAction();
+            BlackjackAscii.displayPlayerChooseAction();
             try {
                 choice = scanner.nextInt();
             } catch (InputMismatchException e) {
-                choice = -1; // Valor inválido para indicar uma opção inválida
-                scanner.nextLine(); // Limpar o buffer do scanner
+                choice = -1;
+                scanner.nextLine();
             }
             if (choice != 1 && choice != 2) {
                 System.out.println("Invalid choice. Please choose a valid option.");
@@ -58,7 +58,7 @@ public class Player extends Person {
                 Card newCard = deck.drawCard();
                 hand.addCard(newCard);
 
-                BlackjackArts.displayPlayerHit(newCard, hand);
+                BlackjackAscii.displayPlayerHit(newCard, hand);
 
                 if (hand.getValue() <= 21) {
                     playTurn(deck);
@@ -66,7 +66,7 @@ public class Player extends Person {
                 break;
             case 2:
                 // Player chooses to stand
-                BlackjackArts.displayPlayerStand();
+                BlackjackAscii.displayPlayerStand();
                 break;
             default:
                 System.out.println("Invalid choice. Please choose a valid option.");

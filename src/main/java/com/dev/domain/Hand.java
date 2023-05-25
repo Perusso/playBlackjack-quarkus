@@ -40,40 +40,10 @@ public class Hand {
         return cards.size() == 2 && getValue() == 21;
     }
 
-    public boolean hasBusted() {
-        return getValue() > 21;
-    }
-
-    public boolean canSplit() {
-        return cards.size() == 2 && cards.get(0).getFigure() == cards.get(1).getFigure();
-    }
-
-    public List<Hand> split() {
-        if (!canSplit()) {
-            throw new IllegalStateException("Hand cannot be split");
-        }
-
-        Hand hand1 = new Hand();
-        Hand hand2 = new Hand();
-        hand1.addCard(cards.get(0));
-        hand2.addCard(cards.get(1));
-
-        return List.of(hand1, hand2);
-    }
-
-    public boolean canDoubleDown() {
-        return cards.size() == 2;
-    }
-
-    public void doubleDown(Card card) {
-        if (!canDoubleDown()) {
-            throw new IllegalStateException("Cannot double down on current hand");
-        }
-
-        cards.add(card);
-    }
-
     public List<Card> getCards() {
         return new ArrayList<>(cards);
+    }
+
+    public void setCards(List<Card> handCards) {
     }
 }

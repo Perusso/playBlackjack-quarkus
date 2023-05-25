@@ -7,7 +7,7 @@ import com.dev.domain.Player;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class BlackjackArts {
+public class BlackjackAscii {
 
     public static void displayStartGameArt(){
         System.out.println("----------------------------------------------\n");

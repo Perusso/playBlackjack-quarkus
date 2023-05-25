@@ -14,10 +14,13 @@ public class Dealer extends Person {
         super(hand);
     }
 
-    @Override
     public void playTurn(Deck deck) {
         while (getHand().getValue() < DEALER_MIN_VALUE) {
             Card card = deck.drawCard();
+            if (card == null) {
+                // O baralho está vazio, encerra o loop
+                break;
+            }
             getHand().addCard(card);
             System.out.println("Dealer drew a card: " + card);
             System.out.println();
