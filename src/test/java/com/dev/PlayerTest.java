@@ -1,6 +1,8 @@
 package com.dev;
 
-import com.dev.domain.*;
+import com.dev.application.domain.*;
+import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Suit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

@@ -1,9 +1,9 @@
-package com.dev.userinterface;
+package com.dev.application.userinterface;
 
-import com.dev.domain.Card;
-import com.dev.domain.Dealer;
-import com.dev.domain.Hand;
-import com.dev.domain.Player;
+import com.dev.application.domain.Card;
+import com.dev.application.domain.Dealer;
+import com.dev.application.domain.Hand;
+import com.dev.application.domain.Player;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped

@@ -1,8 +1,8 @@
 package com.dev;
 
-import com.dev.domain.Card;
-import com.dev.domain.Figure;
-import com.dev.domain.Suit;
+import com.dev.application.domain.Card;
+import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Suit;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 

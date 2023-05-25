@@ -1,7 +1,7 @@
-package com.dev.domain;
+package com.dev.application.domain;
 
 
-import com.dev.userinterface.BlackjackAscii;
+import com.dev.application.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.InputMismatchException;

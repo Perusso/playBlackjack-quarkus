@@ -1,6 +1,6 @@
 package com.dev.application;
 
-import com.dev.usecase.Blackjack;
+import com.dev.application.usecase.Blackjack;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 

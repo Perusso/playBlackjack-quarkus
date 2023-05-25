@@ -1,4 +1,6 @@
-package com.dev.domain;
+package com.dev.application.domain;
+
+import com.dev.application.domain.enums.Figure;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,9 @@
-package com.dev.usecase;
+package com.dev.application.usecase;
 
-import com.dev.domain.*;
-import com.dev.userinterface.BlackjackAscii;
+import com.dev.application.domain.Dealer;
+import com.dev.application.domain.Deck;
+import com.dev.application.domain.Player;
+import com.dev.application.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.Scanner;

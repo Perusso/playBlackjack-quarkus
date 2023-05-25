@@ -1,4 +1,4 @@
-package com.dev.domain;
+package com.dev.application.domain;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
