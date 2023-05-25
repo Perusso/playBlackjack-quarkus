@@ -1,6 +1,6 @@
 
 # Blackjack Console Quarkus
-Este é um projeto de exemplo que implementa o jogo de Blackjack em um console usando o framework Quarkus em Java.
+Este é um projeto que implementa o jogo de Blackjack em um console usando o framework Quarkus em Java.
 
 ## Regras do Jogo
 O objetivo do Blackjack é vencer o dealer, chegando o mais próximo possível de 21 sem ultrapassar esse valor. Aqui estão as regras básicas do jogo:
