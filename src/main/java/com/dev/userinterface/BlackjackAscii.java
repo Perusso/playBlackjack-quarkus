@@ -51,28 +51,6 @@ public class BlackjackAscii {
         System.out.println("3. Exit");
     }
 
-    public static void displayGameRules() {
-        System.out.println("\n" +
-                "   _____          __  __ ______   _____  _    _ _      ______  _____ \n" +
-                "  / ____|   /\\   |  \\/  |  ____| |  __ \\| |  | | |    |  ____|/ ____|\n" +
-                " | |  __   /  \\  | \\  / | |__    | |__) | |  | | |    | |__  | (___  \n" +
-                " | | |_ | / /\\ \\ | |\\/| |  __|   |  _  /| |  | | |    |  __|  \\___ \\ \n" +
-                " | |__| |/ ____ \\| |  | | |____  | | \\ \\| |__| | |____| |____ ____) |\n" +
-                "  \\_____/_/    \\_\\_|  |_|______| |_|  \\_\\\\____/|______|______|_____/ \n" +
-                "                                                                     \n" +
-                "                                                                     \n" +
-                "---------------------------------------------------------------------\n" );
-        System.out.println();
-        System.out.println("Welcome to Blackjack!");
-        System.out.println();
-        System.out.println("The objective of blackjack is to beat the dealer by getting as close as possible to 21 without going over.");
-        System.out.println("The dealer also receives two cards: one face-up and one face-down.");
-        System.out.println("Players then choose to 'Hit' or 'Stand' their hands.");
-        System.out.println("After all players have taken their turn, the dealer reveals their cards.");
-        System.out.println("The winners are any players with a total greater than the dealer's or with cards that add up to exactly 21!");
-
-    }
-
     public static void displayExitMessage() {
         System.out.println("\n" +
                 "   _____  ____   ____  _____    ______     ________   _ \n" +
@@ -124,7 +102,17 @@ public class BlackjackAscii {
         System.out.println();
         System.out.println("-------------------------------------------------");
         System.out.println("Do you want to play again? (Y/N)");
+        System.out.println("See Recent Games (R)");
         System.out.println();
+    }
+
+    public static void displayGameStatistics(int wins, int losses, int ties) {
+        System.out.println();
+        System.out.println("-------------------------------------------------");
+        System.out.println("Stats:");
+        System.out.println("Wins: " + wins);
+        System.out.println("Losses: " + losses);
+        System.out.println("Ties: " + ties);
     }
 
     public static void displayWinArt() {

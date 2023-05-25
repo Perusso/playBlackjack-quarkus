@@ -18,7 +18,6 @@ public class Dealer extends Person {
         while (getHand().getValue() < DEALER_MIN_VALUE) {
             Card card = deck.drawCard();
             if (card == null) {
-                // O baralho está vazio, encerra o loop
                 break;
             }
             getHand().addCard(card);
