@@ -27,7 +27,6 @@ public class Card {
     public String toString() {
         return "" +
                 figure + " of " + suit +
-                //+ " (" + figure.getFigureValue() + ")" +
                 "";
     }
 }

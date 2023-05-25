@@ -68,5 +68,4 @@ public class Deck {
                 .map(Card::toString)
                 .collect(Collectors.joining("\n"));
     }
-
 }

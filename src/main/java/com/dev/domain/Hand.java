@@ -43,7 +43,4 @@ public class Hand {
     public List<Card> getCards() {
         return new ArrayList<>(cards);
     }
-
-    public void setCards(List<Card> handCards) {
-    }
 }
