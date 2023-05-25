@@ -1,4 +1,4 @@
-package com.dev.domain;
+package com.dev.application.domain.enums;
 
 public enum Suit {
     SPADES("Spades"),

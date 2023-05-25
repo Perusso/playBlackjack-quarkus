@@ -1,5 +1,7 @@
-package com.dev.domain;
+package com.dev.application.domain;
 
+import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Suit;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.ArrayList;
