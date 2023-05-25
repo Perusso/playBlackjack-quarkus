@@ -3,6 +3,7 @@ package com.dev;
 import com.dev.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,8 +13,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class PlayerTest {
-
-    private Deck deck;
+    @Mock
+    Deck deck;
 
     @BeforeEach
     public void setup() {

@@ -3,7 +3,7 @@ package com.dev.usecase;
 import com.dev.domain.Dealer;
 import com.dev.domain.Deck;
 import com.dev.domain.Player;
-import com.dev.userinterface.BlackjackArts;
+import com.dev.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -52,16 +52,16 @@ public class Blackjack {
     public void startGame(boolean isFirstTime) {
 
         if (isFirstTime) {
-            BlackjackArts.displayStartGameArt();
+            BlackjackAscii.displayStartGameArt();
         }
 
         checkDeckSize();
 
-        BlackjackArts.displayNewGame();
+        BlackjackAscii.displayNewGame();
 
         this.distributeCards();
 
-        BlackjackArts.displayPersonHands(player, dealer);
+        BlackjackAscii.displayPersonHands(player, dealer);
 
         checkIfPersonHasBlackjackOrContinueGame();
     }
@@ -78,11 +78,11 @@ public class Blackjack {
     private void checkIfPersonHasBlackjackOrContinueGame() {
         if (player.getHand().hasBlackjack()) {
             System.out.println("Player has a blackjack! Player wins! \n" + player.getHand().getCards().toString());
-            BlackjackArts.displayWinArt();
+            BlackjackAscii.displayWinArt();
             playAgain();
         } else if (dealer.getHand().hasBlackjack()) {
             System.out.println("Dealer has a blackjack! Dealer wins! \n" + dealer.getHand().getCards().toString());
-            BlackjackArts.displayLoseArt();
+            BlackjackAscii.displayLoseArt();
             playAgain();
         } else {
             player.playTurn(deck);
@@ -108,31 +108,31 @@ public class Blackjack {
         int playerHandValue = player.getHand().getValue();
         int dealerHandValue = dealer.getHand().getValue();
 
-        BlackjackArts.displayCompareHands(playerHandValue, dealerHandValue);
+        BlackjackAscii.displayCompareHands(playerHandValue, dealerHandValue);
 
         String gameWinner;
 
         if (playerHandValue > 21) {
             gameWinner = "Player busted! Dealer wins!";
-            BlackjackArts.displayLoseArt();
+            BlackjackAscii.displayLoseArt();
         } else if (dealerHandValue > 21) {
             gameWinner = "Dealer busted! Player wins!";
-            BlackjackArts.displayWinArt();
+            BlackjackAscii.displayWinArt();
         } else if (playerHandValue == dealerHandValue) {
             gameWinner = "It's a tie!";
-            BlackjackArts.displayTieArt();
+            BlackjackAscii.displayTieArt();
         } else if (playerHandValue > dealerHandValue) {
             gameWinner = "Player wins!";
-            BlackjackArts.displayWinArt();
+            BlackjackAscii.displayWinArt();
         } else {
             gameWinner = "Dealer wins!";
-            BlackjackArts.displayLoseArt();
+            BlackjackAscii.displayLoseArt();
         }
         System.out.println(gameWinner + "\n");
     }
 
     private void playAgain() {
-        BlackjackArts.displayWannaPlayAgain();
+        BlackjackAscii.displayWannaPlayAgain();
 
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
@@ -146,7 +146,7 @@ public class Blackjack {
             Blackjack blackjack = new Blackjack(deck);
             blackjack.startGame(false);
         } else if (choice.equalsIgnoreCase("N")) {
-            BlackjackArts.displayExitMessage();
+            BlackjackAscii.displayExitMessage();
         } else {
             System.out.println("Invalid choice. Please choose a valid option.");
             playAgain();
