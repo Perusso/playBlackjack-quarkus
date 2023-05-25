@@ -98,11 +98,20 @@ public class BlackjackAscii {
         System.out.println("Enter your choice: ");
     }
 
+    public static void displayDealerDrawACard(Card card) {
+        System.out.println("Dealer drew a card: " + card);
+        System.out.println();
+    }
+
+    public static void displayDealerFinalHand(Hand hand) {
+        System.out.println("Dealer's final hand: " + hand.getCards());
+    }
+
     public static void displayWannaPlayAgain() {
         System.out.println();
         System.out.println("-------------------------------------------------");
         System.out.println("Do you want to play again? (Y/N)");
-        System.out.println("See Recent Games (R)");
+        System.out.println("See Recent Stats (R)");
         System.out.println();
     }
 

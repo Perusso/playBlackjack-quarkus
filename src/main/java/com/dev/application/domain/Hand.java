@@ -20,21 +20,31 @@ public class Hand {
     }
 
     public int getValue() {
-        int value = 0;
-        int numOfAces = 0;
+        int value = calculateHandValue(cards);
+        int numOfAces = countAces(cards);
 
-        for (Card card : cards) {
-            if (card.getFigure() == Figure.ACE) {
-                numOfAces++;
-            }
-            value += card.getFigureValue();
-        }
+        value = reduceValueIfBusted(value, numOfAces);
 
+        return value;
+    }
+
+    private int calculateHandValue(List<Card> cards) {
+        return cards.stream()
+                .mapToInt(Card::getFigureValue)
+                .sum();
+    }
+
+    private int countAces(List<Card> cards) {
+        return (int) cards.stream()
+                .filter(card -> card.getFigure() == Figure.ACE)
+                .count();
+    }
+
+    private int reduceValueIfBusted(int value, int numOfAces) {
         while (value > 21 && numOfAces > 0) {
             value -= 10;
             numOfAces--;
         }
-
         return value;
     }
 
