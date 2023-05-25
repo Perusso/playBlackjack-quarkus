@@ -3,6 +3,7 @@ package com.dev.application.usecase;
 import com.dev.application.domain.Dealer;
 import com.dev.application.domain.Deck;
 import com.dev.application.domain.Player;
+import com.dev.application.domain.enums.Choice;
 import com.dev.application.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -35,8 +36,7 @@ public class Blackjack {
         this.ties = ties;
     }
 
-
-    public void startGame(boolean isFirstTime) {
+        public void startGame(boolean isFirstTime) {
 
         if (isFirstTime) {
             BlackjackAscii.displayStartGameArt();
@@ -131,19 +131,13 @@ public class Blackjack {
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
 
-        if (choice.equalsIgnoreCase("Y")) {
-            player.getHand().clear();
-            dealer.getHand().clear();
+        if (choice.equalsIgnoreCase(Choice.YES.getOption())) {
+            restartGame();
 
-            deck.shuffleDeck();
-
-            Blackjack blackjack = new Blackjack(deck, player, dealer, wins, losses, ties);
-            blackjack.startGame(false);
-
-        } else if (choice.equalsIgnoreCase("N")) {
+        } else if (choice.equalsIgnoreCase(Choice.NO.getOption())) {
             BlackjackAscii.displayExitMessage();
 
-        } else if (choice.equalsIgnoreCase("R")) {
+        } else if (choice.equalsIgnoreCase(Choice.REPORT.getOption())) {
             BlackjackAscii.displayGameStatistics(wins, losses, ties);
             playAgain();
 
@@ -151,5 +145,15 @@ public class Blackjack {
             System.out.println("Invalid choice. Please choose a valid option.");
             playAgain();
         }
+    }
+
+    private void restartGame() {
+        player.getHand().clear();
+        dealer.getHand().clear();
+
+        deck.shuffleDeck();
+
+        Blackjack blackjack = new Blackjack(deck, player, dealer, wins, losses, ties);
+        blackjack.startGame(false);
     }
 }

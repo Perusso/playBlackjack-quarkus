@@ -1,6 +1,7 @@
 package com.dev.application.domain;
 
 
+import com.dev.application.domain.enums.Choice;
 import com.dev.application.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -39,10 +40,12 @@ public class Player extends Person {
                 choice = -1;
                 scanner.nextLine();
             }
-            if (choice != 1 && choice != 2) {
+            if (!Choice.HIT.getOption().equals(String.valueOf(choice)) &&
+                    !Choice.STAND.getOption().equals(String.valueOf(choice))) {
                 System.out.println("Invalid choice. Please choose a valid option.");
             }
-        } while (choice != 1 && choice != 2);
+        } while (!Choice.HIT.getOption().equals(String.valueOf(choice)) &&
+                !Choice.STAND.getOption().equals(String.valueOf(choice)));
         return choice;
     }
 

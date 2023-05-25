@@ -18,13 +18,5 @@ public abstract class Person {
         return hand;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
-
-    public List<Card> getCardsInHand() {
-        return hand.getCards();
-    }
-
     public abstract void playTurn(Deck deck);
 }
