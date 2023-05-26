@@ -4,10 +4,8 @@ import com.dev.application.domain.Dealer;
 import com.dev.application.domain.Deck;
 import com.dev.application.domain.Player;
 import com.dev.application.domain.enums.Choice;
-import com.dev.application.resource.ThreadUtils;
 import com.dev.application.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 import java.util.Scanner;
 
@@ -89,6 +87,7 @@ public class Blackjack {
             losses++;
             playAgain();
         } else {
+            pause(500);
             player.playTurn(deck);
 
             if (player.getHand().getValue() <= 21) {
@@ -146,7 +145,7 @@ public class Blackjack {
         String choice = scanner.nextLine();
 
         if (choice.equalsIgnoreCase(Choice.YES.getOption())) {
-            pause();
+            pause(1000);
             restartGame();
 
         } else if (choice.equalsIgnoreCase(Choice.NO.getOption())) {
@@ -172,9 +171,9 @@ public class Blackjack {
         blackjack.startGame(false);
     }
 
-    public static void pause(){
+    public static void pause(long millis){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
