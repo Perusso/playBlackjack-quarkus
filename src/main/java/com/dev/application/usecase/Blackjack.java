@@ -4,8 +4,10 @@ import com.dev.application.domain.Dealer;
 import com.dev.application.domain.Deck;
 import com.dev.application.domain.Player;
 import com.dev.application.domain.enums.Choice;
+import com.dev.application.resource.ThreadUtils;
 import com.dev.application.userinterface.BlackjackAscii;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import java.util.Scanner;
 
@@ -16,6 +18,7 @@ public class Blackjack {
     private final Dealer dealer;
     private final Deck deck;
     private int wins, losses, ties;
+    private Scanner scanner = new Scanner(System.in);
 
     public Blackjack() {
         this.player = new Player();
@@ -36,7 +39,19 @@ public class Blackjack {
         this.ties = ties;
     }
 
-        public void startGame(boolean isFirstTime) {
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void startGame(boolean isFirstTime) {
 
         if (isFirstTime) {
             BlackjackAscii.displayStartGameArt();
@@ -128,10 +143,10 @@ public class Blackjack {
     private void playAgain() {
         BlackjackAscii.displayWannaPlayAgain();
 
-        Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
 
         if (choice.equalsIgnoreCase(Choice.YES.getOption())) {
+            pause();
             restartGame();
 
         } else if (choice.equalsIgnoreCase(Choice.NO.getOption())) {
@@ -155,5 +170,13 @@ public class Blackjack {
 
         Blackjack blackjack = new Blackjack(deck, player, dealer, wins, losses, ties);
         blackjack.startGame(false);
+    }
+
+    public static void pause(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
