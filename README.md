@@ -23,7 +23,7 @@ Certifique-se de ter o ambiente de desenvolvimento Java e o Maven instalados. Si
 
 ### Execute o seguinte comando para conceder permissões de execução ao arquivo mvnw:
 
-```chmod +x mvnw```
+```chmod +x mvnw``` (Mac)
 
 ### Compile o projeto usando o Maven:
 
@@ -42,3 +42,72 @@ Se você quiser contribuir para este projeto, sinta-se à vontade para abrir uma
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter mais informações.
+
+
+---
+
+
+# Blackjack Console Quarkus
+This is a project that implements the game of Blackjack in a console using the Quarkus framework in Java.
+
+## Game Rules
+The objective of Blackjack is to beat the dealer by getting as close as possible to 21 without exceeding it. Here are the basic rules of the game:
+
+Players start by receiving two cards face-up, while the dealer receives one card face-up and another face-down.
+Players have the option to "Hit" (receive another card) or "Stand" (not receive more cards).
+After the players' turn, the dealer will continue to draw cards until reaching or exceeding a minimum value of 17.
+Players who have a total value greater than the dealer's or who exactly reach 21 will be the winners.
+
+## Running the Project
+Make sure you have the Java development environment and Maven installed. Follow the steps below to compile and run the project:
+
+### Clone the project repository:
+git clone https://github.com/Perusso/blackjack-quarkus
+
+### Navigate to the project directory:
+cd blackjack-quarkus
+
+### Execute the following command to grant execution permissions to the mvnw file:
+chmod +x mvnw (Mac)
+
+### Compile the project using Maven:
+./mvnw package -Dmaven.test.redirectTestOutputToFile=true (Mac/Linux)
+
+mvnw package -Dmaven.test.redirectTestOutputToFile=true (Windows)
+
+### Run the project with the command:
+java -jar target/quarkus-app/quarkus-run.jar
+
+Refer to the official Quarkus documentation for more information on packaging and running the application.
+
+## Contributing
+If you want to contribute to this project, feel free to open an issue or submit a pull request. Any contribution is welcome!
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
