@@ -62,21 +62,21 @@ Players who have a total value greater than the dealer's or who exactly reach 21
 Make sure you have the Java development environment and Maven installed. Follow the steps below to compile and run the project:
 
 ### Clone the project repository:
-git clone https://github.com/Perusso/blackjack-quarkus
+```git clone https://github.com/Perusso/blackjack-quarkus```
 
 ### Navigate to the project directory:
-cd blackjack-quarkus
+```cd blackjack-quarkus```
 
 ### Execute the following command to grant execution permissions to the mvnw file:
-chmod +x mvnw (Mac)
+```chmod +x mvnw ```(Mac)
 
 ### Compile the project using Maven:
-./mvnw package -Dmaven.test.redirectTestOutputToFile=true (Mac/Linux)
+```./mvnw package -Dmaven.test.redirectTestOutputToFile=true``` (Mac/Linux)
 
-mvnw package -Dmaven.test.redirectTestOutputToFile=true (Windows)
+```mvnw package -Dmaven.test.redirectTestOutputToFile=true``` (Windows)
 
 ### Run the project with the command:
-java -jar target/quarkus-app/quarkus-run.jar
+```java -jar target/quarkus-app/quarkus-run.jar```
 
 Refer to the official Quarkus documentation for more information on packaging and running the application.
 
