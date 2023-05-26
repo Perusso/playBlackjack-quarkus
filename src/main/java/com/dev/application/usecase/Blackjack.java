@@ -16,6 +16,7 @@ public class Blackjack {
     private final Dealer dealer;
     private final Deck deck;
     private int wins, losses, ties;
+    private Scanner scanner = new Scanner(System.in);
 
     public Blackjack() {
         this.player = new Player();
@@ -36,7 +37,19 @@ public class Blackjack {
         this.ties = ties;
     }
 
-        public void startGame(boolean isFirstTime) {
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void startGame(boolean isFirstTime) {
 
         if (isFirstTime) {
             BlackjackAscii.displayStartGameArt();
@@ -74,6 +87,7 @@ public class Blackjack {
             losses++;
             playAgain();
         } else {
+            pause(500);
             player.playTurn(deck);
 
             if (player.getHand().getValue() <= 21) {
@@ -128,10 +142,10 @@ public class Blackjack {
     private void playAgain() {
         BlackjackAscii.displayWannaPlayAgain();
 
-        Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
 
         if (choice.equalsIgnoreCase(Choice.YES.getOption())) {
+            pause(1000);
             restartGame();
 
         } else if (choice.equalsIgnoreCase(Choice.NO.getOption())) {
@@ -155,5 +169,13 @@ public class Blackjack {
 
         Blackjack blackjack = new Blackjack(deck, player, dealer, wins, losses, ties);
         blackjack.startGame(false);
+    }
+
+    public static void pause(long millis){
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
