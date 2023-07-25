@@ -1,6 +1,6 @@
 package com.dev.application.domain;
 
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -28,7 +28,7 @@ public class Deck {
 
     public ArrayList<Card> createFullDeck() {
         return Arrays.stream(Suit.values())
-                .flatMap(suit -> Arrays.stream(Figure.values())
+                .flatMap(suit -> Arrays.stream(Rank.values())
                         .map(figure -> new Card(figure, suit)))
                 .collect(Collectors.toCollection(ArrayList::new));
     }

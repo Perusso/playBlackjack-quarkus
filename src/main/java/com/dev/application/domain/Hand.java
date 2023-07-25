@@ -1,6 +1,6 @@
 package com.dev.application.domain;
 
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class Hand {
 
     private int countAces(List<Card> cards) {
         return (int) cards.stream()
-                .filter(card -> card.getFigure() == Figure.ACE)
+                .filter(card -> card.getFigure() == Rank.ACE)
                 .count();
     }
 

@@ -1,7 +1,7 @@
 package com.dev;
 
 import com.dev.application.domain.*;
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,8 +31,8 @@ public class DealerTest {
     @Test
     public void testPlayTurn_DealerStopsAtDealerMinValue() {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(Figure.KING, Suit.HEARTS));
-        cards.add(new Card(Figure.SIX, Suit.CLUBS));
+        cards.add(new Card(Rank.KING, Suit.HEARTS));
+        cards.add(new Card(Rank.SIX, Suit.CLUBS));
 
         when(deck.drawCard()).thenReturn(cards.get(0), cards.get(1), null);
 
@@ -46,9 +46,9 @@ public class DealerTest {
     @Test
     public void testPlayTurn_DealerContinuesDrawingUntilMinValue() {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(Figure.TWO, Suit.DIAMONDS));
-        cards.add(new Card(Figure.FOUR, Suit.SPADES));
-        cards.add(new Card(Figure.THREE, Suit.HEARTS));
+        cards.add(new Card(Rank.TWO, Suit.DIAMONDS));
+        cards.add(new Card(Rank.FOUR, Suit.SPADES));
+        cards.add(new Card(Rank.THREE, Suit.HEARTS));
 
         when(deck.drawCard()).thenReturn(cards.get(0), cards.get(1), cards.get(2), null);
 

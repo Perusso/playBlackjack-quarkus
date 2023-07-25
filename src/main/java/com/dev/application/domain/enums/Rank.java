@@ -1,5 +1,5 @@
 package com.dev.application.domain.enums;
-public enum Figure {
+public enum Rank {
         ACE("Ace", 11),
         TWO("Two", 2),
         THREE("Three", 3),
@@ -18,7 +18,7 @@ public enum Figure {
 
     private int figureValue;
 
-    Figure(String name, int value) {
+    Rank(String name, int value) {
         this.figureName = name;
         this.figureValue = value;
     }
