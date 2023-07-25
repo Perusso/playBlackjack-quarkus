@@ -1,7 +1,7 @@
 package com.dev;
 
 import com.dev.application.domain.*;
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,9 +21,9 @@ public class PlayerTest {
     @BeforeEach
     public void setup() {
         ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card(Figure.ACE, Suit.CLUBS));
-        cards.add(new Card(Figure.KING, Suit.SPADES));
-        cards.add(new Card(Figure.QUEEN, Suit.HEARTS));
+        cards.add(new Card(Rank.ACE, Suit.CLUBS));
+        cards.add(new Card(Rank.KING, Suit.SPADES));
+        cards.add(new Card(Rank.QUEEN, Suit.HEARTS));
         deck = new Deck(false);
         deck.addCards(cards);
     }

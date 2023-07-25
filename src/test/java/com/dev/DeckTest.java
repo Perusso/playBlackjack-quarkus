@@ -2,7 +2,7 @@ package com.dev;
 
 import com.dev.application.domain.Card;
 import com.dev.application.domain.Deck;
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
@@ -31,7 +31,7 @@ public class DeckTest {
 
     @Test
     public void testAddCard() {
-        Card card = new Card(Figure.ACE, Suit.SPADES);
+        Card card = new Card(Rank.ACE, Suit.SPADES);
         deck.addCard(card);
 
         Assertions.assertFalse(deck.isEmpty());
@@ -42,8 +42,8 @@ public class DeckTest {
     @Test
     public void testAddCards() {
         ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card(Figure.TWO, Suit.DIAMONDS));
-        cards.add(new Card(Figure.KING, Suit.HEARTS));
+        cards.add(new Card(Rank.TWO, Suit.DIAMONDS));
+        cards.add(new Card(Rank.KING, Suit.HEARTS));
 
         deck.addCards(cards);
 
@@ -56,18 +56,18 @@ public class DeckTest {
     public void testShuffleDeck() {
         deck.reset();
 
-        Card card1 = new Card(Figure.ACE, Suit.CLUBS);
-        Card card2 = new Card(Figure.KING, Suit.SPADES);
-        Card card3 = new Card(Figure.QUEEN, Suit.HEARTS);
-        Card card4 = new Card(Figure.TEN, Suit.DIAMONDS);
-        Card card5 = new Card(Figure.NINE, Suit.CLUBS);
-        Card card6 = new Card(Figure.EIGHT, Suit.SPADES);
-        Card card7 = new Card(Figure.SEVEN, Suit.HEARTS);
-        Card card8 = new Card(Figure.SIX, Suit.DIAMONDS);
-        Card card9 = new Card(Figure.FIVE, Suit.CLUBS);
-        Card card10 = new Card(Figure.FOUR, Suit.SPADES);
-        Card card11 = new Card(Figure.THREE, Suit.HEARTS);
-        Card card12 = new Card(Figure.TWO, Suit.DIAMONDS);
+        Card card1 = new Card(Rank.ACE, Suit.CLUBS);
+        Card card2 = new Card(Rank.KING, Suit.SPADES);
+        Card card3 = new Card(Rank.QUEEN, Suit.HEARTS);
+        Card card4 = new Card(Rank.TEN, Suit.DIAMONDS);
+        Card card5 = new Card(Rank.NINE, Suit.CLUBS);
+        Card card6 = new Card(Rank.EIGHT, Suit.SPADES);
+        Card card7 = new Card(Rank.SEVEN, Suit.HEARTS);
+        Card card8 = new Card(Rank.SIX, Suit.DIAMONDS);
+        Card card9 = new Card(Rank.FIVE, Suit.CLUBS);
+        Card card10 = new Card(Rank.FOUR, Suit.SPADES);
+        Card card11 = new Card(Rank.THREE, Suit.HEARTS);
+        Card card12 = new Card(Rank.TWO, Suit.DIAMONDS);
 
         deck.addCards(new ArrayList<>(Arrays.asList(card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12)));
 
@@ -81,9 +81,9 @@ public class DeckTest {
 
     @Test
     public void testDrawCard() {
-        Card card1 = new Card(Figure.TWO, Suit.SPADES);
-        Card card2 = new Card(Figure.FOUR, Suit.HEARTS);
-        Card card3 = new Card(Figure.SIX, Suit.DIAMONDS);
+        Card card1 = new Card(Rank.TWO, Suit.SPADES);
+        Card card2 = new Card(Rank.FOUR, Suit.HEARTS);
+        Card card3 = new Card(Rank.SIX, Suit.DIAMONDS);
 
         deck.addCards(new ArrayList<>(Arrays.asList(card1, card2, card3)));
 
@@ -98,15 +98,15 @@ public class DeckTest {
     public void testIsEmpty() {
         Assertions.assertTrue(deck.isEmpty());
 
-        deck.addCard(new Card(Figure.JACK, Suit.CLUBS));
+        deck.addCard(new Card(Rank.JACK, Suit.CLUBS));
 
         Assertions.assertFalse(deck.isEmpty());
     }
 
     @Test
     public void testReset() {
-        deck.addCard(new Card(Figure.ACE, Suit.DIAMONDS));
-        deck.addCard(new Card(Figure.TEN, Suit.HEARTS));
+        deck.addCard(new Card(Rank.ACE, Suit.DIAMONDS));
+        deck.addCard(new Card(Rank.TEN, Suit.HEARTS));
 
         deck.reset();
 

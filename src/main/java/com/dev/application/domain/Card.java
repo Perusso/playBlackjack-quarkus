@@ -1,25 +1,25 @@
 package com.dev.application.domain;
 
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
 
 public class Card {
 
-    private Figure figure;
+    private Rank rank;
 
     private Suit suit;
 
-    public Card(Figure figure, Suit suit) {
-        this.figure = figure;
+    public Card(Rank rank, Suit suit) {
+        this.rank = rank;
         this.suit = suit;
     }
 
-    public Figure getFigure() {
-        return figure;
+    public Rank getFigure() {
+        return rank;
     }
 
     public int getFigureValue() {
-        return figure.getFigureValue();
+        return rank.getFigureValue();
     }
 
     public Suit getSuit() {
@@ -29,7 +29,7 @@ public class Card {
     @Override
     public String toString() {
         return "" +
-                figure + " of " + suit +
+                rank + " of " + suit +
                 "";
     }
 }

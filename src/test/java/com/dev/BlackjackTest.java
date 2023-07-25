@@ -4,7 +4,7 @@ import com.dev.application.domain.Card;
 import com.dev.application.domain.Dealer;
 import com.dev.application.domain.Deck;
 import com.dev.application.domain.Player;
-import com.dev.application.domain.enums.Figure;
+import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
 import com.dev.application.usecase.Blackjack;
 import io.quarkus.test.junit.QuarkusTest;
@@ -30,9 +30,9 @@ public class BlackjackTest {
     @BeforeEach
     public void setup() throws InterruptedException {
         ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card(Figure.ACE, Suit.CLUBS));
-        cards.add(new Card(Figure.KING, Suit.SPADES));
-        cards.add(new Card(Figure.QUEEN, Suit.HEARTS));
+        cards.add(new Card(Rank.ACE, Suit.CLUBS));
+        cards.add(new Card(Rank.KING, Suit.SPADES));
+        cards.add(new Card(Rank.QUEEN, Suit.HEARTS));
         deck = new Deck(false);
         deck.addCards(cards);
     }
@@ -66,12 +66,12 @@ public class BlackjackTest {
         Dealer dealer = new Dealer();
 
         Deck deck = new Deck(false);
-        deck.addCard(new Card(Figure.ACE, Suit.CLUBS));
-        deck.addCard(new Card(Figure.KING, Suit.SPADES));
-        deck.addCard(new Card(Figure.TEN, Suit.HEARTS));
-        deck.addCard(new Card(Figure.NINE, Suit.SPADES));
-        deck.addCard(new Card(Figure.EIGHT, Suit.SPADES));
-        deck.addCard(new Card(Figure.SEVEN, Suit.SPADES));
+        deck.addCard(new Card(Rank.ACE, Suit.CLUBS));
+        deck.addCard(new Card(Rank.KING, Suit.SPADES));
+        deck.addCard(new Card(Rank.TEN, Suit.HEARTS));
+        deck.addCard(new Card(Rank.NINE, Suit.SPADES));
+        deck.addCard(new Card(Rank.EIGHT, Suit.SPADES));
+        deck.addCard(new Card(Rank.SEVEN, Suit.SPADES));
 
         Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
         blackjack.setScanner(scannerMock);
@@ -96,12 +96,12 @@ public class BlackjackTest {
         player.setScanner(scannerMock);
         Dealer dealer = new Dealer();
         Deck deck = new Deck(false);
-        deck.addCard(new Card(Figure.NINE, Suit.SPADES));
-        deck.addCard(new Card(Figure.EIGHT, Suit.SPADES));
-        deck.addCard(new Card(Figure.SEVEN, Suit.SPADES));
-        deck.addCard(new Card(Figure.ACE, Suit.CLUBS));
-        deck.addCard(new Card(Figure.KING, Suit.SPADES));
-        deck.addCard(new Card(Figure.TEN, Suit.HEARTS));
+        deck.addCard(new Card(Rank.NINE, Suit.SPADES));
+        deck.addCard(new Card(Rank.EIGHT, Suit.SPADES));
+        deck.addCard(new Card(Rank.SEVEN, Suit.SPADES));
+        deck.addCard(new Card(Rank.ACE, Suit.CLUBS));
+        deck.addCard(new Card(Rank.KING, Suit.SPADES));
+        deck.addCard(new Card(Rank.TEN, Suit.HEARTS));
 
         Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
         blackjack.setScanner(scannerMock);
@@ -123,12 +123,12 @@ public class BlackjackTest {
         player.setScanner(scannerMock);
         Dealer dealer = new Dealer();
         Deck deck = new Deck(false);
-        deck.addCard(new Card(Figure.KING, Suit.CLUBS));
-        deck.addCard(new Card(Figure.KING, Suit.SPADES));
-        deck.addCard(new Card(Figure.KING, Suit.HEARTS));
-        deck.addCard(new Card(Figure.NINE, Suit.SPADES));
-        deck.addCard(new Card(Figure.EIGHT, Suit.SPADES));
-        deck.addCard(new Card(Figure.SEVEN, Suit.SPADES));
+        deck.addCard(new Card(Rank.KING, Suit.CLUBS));
+        deck.addCard(new Card(Rank.KING, Suit.SPADES));
+        deck.addCard(new Card(Rank.KING, Suit.HEARTS));
+        deck.addCard(new Card(Rank.NINE, Suit.SPADES));
+        deck.addCard(new Card(Rank.EIGHT, Suit.SPADES));
+        deck.addCard(new Card(Rank.SEVEN, Suit.SPADES));
         Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
         blackjack.setScanner(scannerMock);
 
