@@ -50,7 +50,6 @@ public class Blackjack {
     }
 
     public void startGame(boolean isFirstTime) {
-
         if (isFirstTime) {
             BlackjackAscii.displayStartGameArt();
         }
@@ -67,8 +66,7 @@ public class Blackjack {
     }
 
     private void checkDeckSize() {
-        //check if the deck contains at least 4 cards to play a new game, otherwise, a new full deck is created
-        if (deck.getDeck().size() < 4) {
+        if (deck.isEmpty()) {
             deck.reset();
             deck.addCards(new Deck(true).getDeck());
             deck.shuffleDeck();
@@ -77,26 +75,34 @@ public class Blackjack {
 
     private void checkIfPersonHasBlackjackOrContinueGame() {
         if (player.getHand().hasBlackjack()) {
-            System.out.println("Player has a blackjack! Player wins! \n" + player.getHand().getCards().toString());
+            displayGameResult("Player has a blackjack! Player wins!", true);
+        } else if (dealer.getHand().hasBlackjack()) {
+            displayGameResult("Dealer has a blackjack! Dealer wins!", false);
+        } else {
+            playGame();
+        }
+    }
+
+    private void playGame() {
+        pause(500);
+        player.playTurn(deck);
+
+        if (player.getHand().getValue() <= 21) {
+            dealer.playTurn(deck);
+        }
+
+        compareHands();
+        playAgain();
+    }
+
+    private void displayGameResult(String message, boolean isPlayerWinner) {
+        System.out.println(message + "\n");
+        if (isPlayerWinner) {
             BlackjackAscii.displayWinArt();
             wins++;
-            playAgain();
-        } else if (dealer.getHand().hasBlackjack()) {
-            System.out.println("Dealer has a blackjack! Dealer wins! \n" + dealer.getHand().getCards().toString());
+        } else {
             BlackjackAscii.displayLoseArt();
             losses++;
-            playAgain();
-        } else {
-            pause(500);
-            player.playTurn(deck);
-
-            if (player.getHand().getValue() <= 21) {
-                dealer.playTurn(deck);
-            }
-
-            compareHands();
-
-            playAgain();
         }
     }
 
