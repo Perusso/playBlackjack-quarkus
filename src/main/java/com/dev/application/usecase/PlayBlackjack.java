@@ -10,7 +10,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Scanner;
 
 @ApplicationScoped
-public class Blackjack {
+public class PlayBlackjack {
 
     private final Player player;
     private final Dealer dealer;
@@ -18,7 +18,7 @@ public class Blackjack {
     private int wins, losses, ties;
     private Scanner scanner = new Scanner(System.in);
 
-    public Blackjack() {
+    public PlayBlackjack() {
         this.player = new Player();
         this.dealer = new Dealer();
         this.deck = new Deck(true);
@@ -28,7 +28,7 @@ public class Blackjack {
         deck.shuffleDeck();
     }
 
-    public Blackjack(Deck deck, Player player, Dealer dealer, int wins, int losses, int ties) {
+    public PlayBlackjack(Deck deck, Player player, Dealer dealer, int wins, int losses, int ties) {
         this.player = player;
         this.dealer = dealer;
         this.deck = deck;
@@ -173,8 +173,8 @@ public class Blackjack {
 
         deck.shuffleDeck();
 
-        Blackjack blackjack = new Blackjack(deck, player, dealer, wins, losses, ties);
-        blackjack.startGame(false);
+        PlayBlackjack playBlackjack = new PlayBlackjack(deck, player, dealer, wins, losses, ties);
+        playBlackjack.startGame(false);
     }
 
     public static void pause(long millis){

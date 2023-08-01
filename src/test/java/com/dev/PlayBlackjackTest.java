@@ -6,7 +6,7 @@ import com.dev.application.domain.Deck;
 import com.dev.application.domain.Player;
 import com.dev.application.domain.enums.Rank;
 import com.dev.application.domain.enums.Suit;
-import com.dev.application.usecase.Blackjack;
+import com.dev.application.usecase.PlayBlackjack;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 
 
 @QuarkusTest
-public class BlackjackTest {
+public class PlayBlackjackTest {
 
     @Mock
     Deck deck;
@@ -46,10 +46,10 @@ public class BlackjackTest {
         Player player = new Player();
         player.setScanner(scannerMock);
         Dealer dealer = new Dealer();
-        Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
-        blackjack.setScanner(scannerMock);
+        PlayBlackjack playBlackjack = new PlayBlackjack(deck, player, dealer, 0, 0, 0);
+        playBlackjack.setScanner(scannerMock);
 
-        blackjack.startGame(true);
+        playBlackjack.startGame(true);
 
         assertEquals(2, player.getHand().getCards().size());
     }
@@ -73,17 +73,17 @@ public class BlackjackTest {
         deck.addCard(new Card(Rank.EIGHT, Suit.SPADES));
         deck.addCard(new Card(Rank.SEVEN, Suit.SPADES));
 
-        Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
-        blackjack.setScanner(scannerMock);
+        PlayBlackjack playBlackjack = new PlayBlackjack(deck, player, dealer, 0, 0, 0);
+        playBlackjack.setScanner(scannerMock);
 
-        blackjack.startGame(true);
+        playBlackjack.startGame(true);
 
         System.out.println(player.getHand().getCards());
         System.out.println(dealer.getHand().getCards());
 
         assertEquals(2, player.getHand().getCards().size());
         assertEquals(2, dealer.getHand().getCards().size());
-        assertEquals(1, blackjack.getWins());
+        assertEquals(1, playBlackjack.getWins());
     }
 
     @Test
@@ -103,14 +103,14 @@ public class BlackjackTest {
         deck.addCard(new Card(Rank.KING, Suit.SPADES));
         deck.addCard(new Card(Rank.TEN, Suit.HEARTS));
 
-        Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
-        blackjack.setScanner(scannerMock);
+        PlayBlackjack playBlackjack = new PlayBlackjack(deck, player, dealer, 0, 0, 0);
+        playBlackjack.setScanner(scannerMock);
 
-        blackjack.startGame(false);
+        playBlackjack.startGame(false);
 
         assertEquals(3, player.getHand().getCards().size());
         assertEquals(2, dealer.getHand().getCards().size());
-        assertEquals(1, blackjack.getLosses());
+        assertEquals(1, playBlackjack.getLosses());
     }
 
     @Test
@@ -129,13 +129,13 @@ public class BlackjackTest {
         deck.addCard(new Card(Rank.NINE, Suit.SPADES));
         deck.addCard(new Card(Rank.EIGHT, Suit.SPADES));
         deck.addCard(new Card(Rank.SEVEN, Suit.SPADES));
-        Blackjack blackjack = new Blackjack(deck, player, dealer, 0, 0, 0);
-        blackjack.setScanner(scannerMock);
+        PlayBlackjack playBlackjack = new PlayBlackjack(deck, player, dealer, 0, 0, 0);
+        playBlackjack.setScanner(scannerMock);
 
-        blackjack.startGame(true);
+        playBlackjack.startGame(true);
 
         assertTrue(player.getHand().getValue() > 21);
         assertEquals(2, dealer.getHand().getCards().size());
-        assertEquals(1, blackjack.getLosses());
+        assertEquals(1, playBlackjack.getLosses());
     }
 }

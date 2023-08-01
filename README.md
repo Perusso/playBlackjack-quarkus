@@ -15,11 +15,11 @@ Certifique-se de ter o ambiente de desenvolvimento Java e o Maven instalados. Si
 
 ### Clone o repositório do projeto:
 
-```git clone https://github.com/Perusso/blackjack-quarkus```
+```git clone https://github.com/Perusso/playBlackjack-quarkus```
 
 ### Navegue até o diretório do projeto:
 
-```cd blackjack-quarkus```
+```cd playBlackjack-quarkus```
 
 ### Execute o seguinte comando para conceder permissões de execução ao arquivo mvnw:
 
@@ -62,10 +62,10 @@ Players who have a total value greater than the dealer's or who exactly reach 21
 Make sure you have the Java development environment and Maven installed. Follow the steps below to compile and run the project:
 
 ### Clone the project repository:
-```git clone https://github.com/Perusso/blackjack-quarkus```
+```git clone https://github.com/Perusso/playBlackjack-quarkus```
 
 ### Navigate to the project directory:
-```cd blackjack-quarkus```
+```cd playBlackjack-quarkus```
 
 ### Execute the following command to grant execution permissions to the mvnw file:
 ```chmod +x mvnw ```(Mac)
