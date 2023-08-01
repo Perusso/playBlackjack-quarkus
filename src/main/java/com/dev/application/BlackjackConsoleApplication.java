@@ -1,6 +1,6 @@
 package com.dev.application;
 
-import com.dev.application.usecase.Blackjack;
+import com.dev.application.usecase.PlayBlackjack;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
@@ -9,8 +9,8 @@ public class BlackjackConsoleApplication implements QuarkusApplication {
 
     @Override
     public int run(String... args) {
-        Blackjack blackjack = new Blackjack();
-        blackjack.startGame(true);
+        PlayBlackjack playBlackjack = new PlayBlackjack();
+        playBlackjack.startGame(true);
         return 0;
     }
 }
